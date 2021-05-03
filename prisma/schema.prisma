@@ -1,0 +1,19 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Car {
+  id           String @id @default(uuid())
+  year         Int    @db.Integer
+  color        String @db.VarChar(100)
+  manufacturer String @db.VarChar(255)
+  model        String @db.VarChar(100)
+}
